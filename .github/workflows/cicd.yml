@@ -21,3 +21,23 @@ jobs:
           key: ${{ secrets.SSH_PASSWORD }}
           source: "docker-compose.yml, server/"
           target: /home/techeer/
+      
+      - name: 배포할꺼니까~
+        id: delploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: docker compose up -d
+      
+      - name: 파일 삭제해주기~
+        id: remove
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            rm -rf server
+            rm docker-compose.yml
