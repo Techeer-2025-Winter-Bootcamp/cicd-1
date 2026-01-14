@@ -26,18 +26,18 @@ jobs:
         id: delploy
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: docker compose up -d
       
       - name: 파일 삭제해주기~
         id: remove
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             rm -rf server
             rm docker-compose.yml
