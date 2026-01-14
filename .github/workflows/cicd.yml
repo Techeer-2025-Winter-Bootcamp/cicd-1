@@ -29,7 +29,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PASSWORD }}
-          script: docker compose up -d
+          script: docker compose up -d --build --force-recreate
       
       - name: 파일 삭제해주기~
         id: remove
