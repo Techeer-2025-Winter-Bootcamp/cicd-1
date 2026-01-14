@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PASSWORD }}
           source: "docker-compose.yml, server/"
-          destination: /home/techeer/
+          target: /home/techeer/
